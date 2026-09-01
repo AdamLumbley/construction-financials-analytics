@@ -3,7 +3,7 @@
 Power BI financials dashboard for construction cost data — star schema, KPI cards, trend charts, and detail drill-down.
 
 ## Overview
-![Overview](https://github.com/AdamLumbley/construction-financials-analytics/blob/main/Construction%20-%20Financials%20-%20Overview.png?raw=true)
+![Overview](https://github.com/AdamLumbley/construction-financials-analytics/blob/main/Construction%20-%20Financials%20-%20Overview%202.png?raw=true)
 KPI cards (Total Costs, Budgeted, Actual, Variance, Variance %), monthly variance trend, and breakdowns by subcontractor and project.
 
 ## Trends
@@ -22,6 +22,7 @@ Full transaction-level table for drill-down and audit, filterable by the same sl
 - Found and merged a duplicate subcontractor entry ("Basalt Concrete LLC" vs "L.L.C.") during profiling, before it could split cost totals across two fake entities
 - Kept City and State as separate columns (rather than dropping State) to future-proof the model in case the company expands beyond Idaho
 - Retained "Subcontractor" as the precise term throughout, rather than the more common but less accurate "Contractor," since the data represents subcontracted trade work, not general contracting
+- Handled months with no transactions (e.g., a single project active in only two non-consecutive months) by forcing the Variance measure to return 0 instead of blank, so the trend line shows an honest flat period instead of a misleading straight-line jump between sparse data points
 
 ## Sample DAX
 
